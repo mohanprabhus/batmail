@@ -33,6 +33,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Yaml\Yaml;
+use TijsVerkoyen\CssToInlineStyles\CssToInlineStyles;
 
 /**
  * Class SendCommand
@@ -75,7 +76,8 @@ class SendCommand extends Command
         $this
           ->setName('send')
           ->addArgument('file', InputArgument::OPTIONAL, 'File', 'index.html')
-          ->addOption('to', null, InputOption::VALUE_REQUIRED, 'To')
+          ->addOption('to', null, InputOption::VALUE_REQUIRED, 'Mail to')
+          ->addOption('inline', null, InputOption::VALUE_NONE, 'Inline CSS (useful for Gmail and Outlook)')
           ->setDescription('Send mail.');
     }
 
@@ -97,7 +99,14 @@ class SendCommand extends Command
         $phpMailer = $this->getPHPMailer();
         $phpMailer->addAddress($to);
 
-        $phpMailer->Body = $this->prepareBody($filename, $phpMailer);
+        $content = $this->prepareBody($filename, $phpMailer);
+
+        if ($input->getOption('inline')) {
+            $cssToInlineStyles = new CssToInlineStyles();
+            $content = $cssToInlineStyles->convert($content);
+        }
+
+        $phpMailer->Body = $content;
 
         if (!$phpMailer->send()) {
             if (!is_null($this->logger)) {

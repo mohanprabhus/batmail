@@ -17,7 +17,8 @@
         "monolog/monolog": "^1.22",
         "symfony/yaml": "^3.2",
         "padraic/phar-updater": "^1.0",
-        "guzzlehttp/guzzle": "^6.2"
+        "guzzlehttp/guzzle": "^6.2",
+        "tijsverkoyen/css-to-inline-styles": "^2.2"
     },
     "suggest": {
         "smalot/sendmail-smtp": "*"
