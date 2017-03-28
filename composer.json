@@ -1,0 +1,30 @@
+{
+    "name": "smalot/batmail",
+    "description" : "Send a newsletter based on a html file with local image folder.",
+    "keywords": ["send", "newsletter", "sendmail", "bat"],
+    "license" : "MIT",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Sebastien Malot",
+            "email": "sebastien@malot.fr"
+        }
+    ],
+    "require": {
+        "symfony/event-dispatcher": "^3.2",
+        "symfony/console": "^3.2",
+        "phpmailer/phpmailer": "^5.2",
+        "monolog/monolog": "^1.22",
+        "symfony/yaml": "^3.2",
+        "padraic/phar-updater": "^1.0",
+        "guzzlehttp/guzzle": "^6.2"
+    },
+    "suggest": {
+        "smalot/sendmail-smtp": "*"
+    },
+    "autoload": {
+        "psr-4" : {
+            "Smalot\\Batmail\\" : ["src"]
+        }
+    }
+}

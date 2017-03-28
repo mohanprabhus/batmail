@@ -1,0 +1,29 @@
+{
+  "alias": "batmail.phar",
+  "chmod": "0755",
+  "directories": [
+    "bin",
+    "src"
+  ],
+  "files": [
+    "LICENSE",
+    "README.md"
+  ],
+  "finder": [
+    {
+      "in": "vendor",
+      "name": ["*.php", "*.xml", "*.xsd", "*.yml", "*.json"],
+      "exclude": ["Tests", ".git"]
+    }
+  ],
+  "git-commit": "git-commit",
+  "git-version": "git-version",
+  "main": "bin/batmail.php",
+  "algorithm": "SHA512",
+  "compression": "GZ",
+  "output": "batmail-@git-version@.phar",
+  "replacements": {
+    "@git-version@": "@git-version@"
+  },
+  "stub": true
+}
