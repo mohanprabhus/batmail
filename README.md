@@ -15,3 +15,15 @@ chmod +x batmail
 ````sh
 ./batmail send index.html --to=test@example.com --inline
 ````
+
+## Options
+
+Use the `to` option to specify the mail destination.
+
+The `inline` option is usefull to improve both Gmail and Outlook support by copying css from `<style>` tags to inline attribute style.
+
+## Update
+
+````sh
+./batmail self-update
+````
