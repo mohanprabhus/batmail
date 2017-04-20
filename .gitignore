@@ -7,4 +7,5 @@ composer.phar
 composer.lock
 test*
 index*
-batmail*
+/batmail*
+
